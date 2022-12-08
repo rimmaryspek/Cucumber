@@ -1,9 +1,14 @@
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +31,40 @@ public class CommonMethods {
         }
         driver.manage().window().maximize();
         driver.get(ConfigReader.getPropertyValue("url"));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT,TimeUnit.SECONDS);
+    }
+    public static void closeBrowser(){
+        driver.quit();
+    }
+    // we use this method instead of send key method throughout the framework
+    public static void sendText(WebElement element,String textToSend){
+        element.clear();
+        element.sendKeys(textToSend);
+    }
+    // to get webdriver wait
+    public static WebDriverWait getWait(){
+        WebDriverWait wait = new WebDriverWait(driver,Constants.EXPLICIT_WAIT);
+        return wait;
+    }
+    public static void waitForClikability(WebElement element){
+        getWait().until(ExpectedConditions.elementToBeClickable(element));
+    }
+    public static void click(WebElement element){
+        waitForClikability(element);
+        element.click();
+    }
+    public static JavascriptExecutor getJSExecutor(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return js;
+
+    }
+
+    public static void jsClick(WebElement element){
+        getJSExecutor().executeScript("arguments[0].click();", element);
+    }
+    public static void selectDropDown(WebElement element, String text){
+        Select s = new Select(element);
+        s.selectByVisibleText(text);
     }
 }
+
