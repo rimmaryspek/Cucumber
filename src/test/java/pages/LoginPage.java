@@ -7,14 +7,17 @@ import utils.CommonMethods;
 
 public class LoginPage extends CommonMethods {
 
-    @FindBy(xpath ="//[@id='txtUsername']")
+    @FindBy(id="txtUsername")
     public WebElement usernameTextField;
 
     @FindBy(id="txtPassword")
     public WebElement passwordTextField;
 
-    @FindBy(xpath="//[@id='btnLogin']")
+    @FindBy(id="btnLogin")
     public WebElement loginButton;
+
+    @FindBy(id="spanMessage")
+    public WebElement errorMessage;
 
 
     public LoginPage(){

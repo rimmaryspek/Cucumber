@@ -29,10 +29,10 @@ public class LoginSteps extends CommonMethods {
 
     @When("user enters valid username and valid password")
     public void user_enters_valid_username_and_valid_password() {
-        LoginPage login = new LoginPage();
+       // LoginPage login = new LoginPage();
        // WebElement userName = driver.findElement(By.xpath("//input[@id = 'txtUsername']"));
         //userName.sendKeys(ConfigReader.getPropertyValue("userName"));
-        sendText(login.usernameTextField, ConfigReader.getPropertyValue("username"));
+        sendText(login.usernameTextField, ConfigReader.getPropertyValue("userName"));
        // WebElement password = driver.findElement(By.xpath("//input[@id = 'txtPassword']"));
        // password.sendKeys(ConfigReader.getPropertyValue("password"));
         sendText(login.passwordTextField, ConfigReader.getPropertyValue("password"));
@@ -40,14 +40,15 @@ public class LoginSteps extends CommonMethods {
 
     @When("user clicks on login button")
     public void user_clicks_on_login_button() {
-        WebElement logIn = driver.findElement(By.xpath("//input[@name = 'Submit']"));
-        click(logIn);
+       // LoginPage login = new LoginPage();
+       // WebElement logIn = driver.findElement(By.xpath("//input[@name = 'Submit']"));
+        click(login.loginButton);
     }
 
     @Then("user is successfully logged in")
     public void user_is_successfully_logged_in() {
-        WebElement welcomeMessage = driver.findElement(By.id("welcome"));
-        if (welcomeMessage.isDisplayed()) {
+     //  WebElement welcomeMessage = driver.findElement(By.id("welcome"));
+        if (dashboardPage.welcomeMessage.isDisplayed()) {
             System.out.println("Test case is passed");
         } else {
             System.out.println("Test case is failed");
@@ -55,17 +56,19 @@ public class LoginSteps extends CommonMethods {
     }
     @When("user enters ess username and ess password")
     public void user_enters_ess_username_and_ess_password() {
-        WebElement usernameField = driver.findElement(By.id("txtUsername"));
-        sendText(usernameField, "asmahuma321");
-        WebElement passwordField = driver.findElement(By.id("txtPassword"));
-        sendText(passwordField, "Hum@nhrm123");
+       // LoginPage login = new LoginPage();
+        // WebElement usernameField = driver.findElement(By.id("txtUsername"));
+        sendText(login.usernameTextField, "admin");
+        //   WebElement passwordField = driver.findElement(By.id("txtPassword"));
+        sendText(login.passwordTextField, "Hum@nhrm123");
     }
     @When("user enters invalid username and password")
     public void user_enters_invalid_username_and_password() {
-        WebElement usernameField = driver.findElement(By.id("txtUsername"));
-        sendText(usernameField, "admin123");
-        WebElement passwordField = driver.findElement(By.id("txtPassword"));
-        sendText(passwordField, "Hum@nhrm");
+        //LoginPage login = new LoginPage();
+        // WebElement usernameField = driver.findElement(By.id("txtUsername"));
+        sendText(login.usernameTextField, "admin");
+        //  WebElement passwordField = driver.findElement(By.id("txtPassword"));
+        sendText(login.passwordTextField, "Hum@nhrm123");
     }
 
     @Then("error message displayed")

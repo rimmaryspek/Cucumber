@@ -11,12 +11,12 @@ import org.junit.runner.RunWith;
         //glue means attached all the files
         glue = "steps",
         //when you set dryRun == true means its stop all the other steps
-        //it will execute only new scenarios
+        //it will scan only new implementations
        //dryRun =true
         //when we set dryRun to false will execute all again
         dryRun= false,
         //to execute test cases from different sprint's like below
-        tags="@tc1103",
+        tags="@outline",
         // to remove irrelevant info from console you need to say monochrome to true
         monochrome = true,
         //to print the steps in the console
