@@ -14,13 +14,14 @@ import org.junit.runner.RunWith;
         //it will scan only new implementations
        //dryRun =true
         //when we set dryRun to false will execute all again
-        dryRun= false,
+        dryRun=false,
         //to execute test cases from different sprint's like below
-        tags="@outline",
+        tags="@tc1101",
         // to remove irrelevant info from console you need to say monochrome to true
         monochrome = true,
-        //to print the steps in the console
-        plugin = {"pretty"}
+        //pretty to print the steps in the console
+        //
+        plugin = {"pretty","html:target/cucumber.html","json:target/cucumber.json","rerun:target/failed.txt"}
 
 )
 

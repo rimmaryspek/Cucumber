@@ -19,3 +19,14 @@ Feature: Login functionality
     When user enters invalid username and password
     And user clicks on login button
     Then error message displayed
+
+@TC1105
+  Scenario Outline: Invalid login functionality
+
+    When user enters different "<userName>" and "<password>" and verify the "<error>" for it
+    Examples:
+      | userName | password | error |
+      |admin     |cristiano |Invalid credentials|
+      |ronaldo   |Hum@nhrm123|Invalid credentials|
+      |          |Hum@nhrm123|Username cannot be empty|
+      |admin     |           |Password cannot be empty|
